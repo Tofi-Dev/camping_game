@@ -21,7 +21,14 @@ function game_draw()
         draw_tree(tree.x - cam.x, tree.y - cam.y)
     end
 
+    camera(-64,-64)
+
     draw_layers()
+
+    camera(0,0)
+
+    print(cam.x, 0, 0, 7)
+    print(cam.y, 0, 8, 7)
 end
 
 function game_update()
@@ -37,16 +44,26 @@ function game_update()
     if (btn(3)) then
         cam.y  = cam.y + 1
     end
+
+    if cam.x > 200 then
+        cam.x = 200
+    end
+    if cam.y > 200 then
+        cam.y = 200
+    end
+    if cam.x < -200 then
+        cam.x = -200
+    end
+    if cam.y < -200 then
+        cam.y = -200
+    end
 end
 
 function game_init()
     cam = {x=0, y=0}
-    for i = 1, 16 do
-        add(trees, {x=rnd(384)-192, y=rnd(384)-192})
+    for i = 1,128 do
+        add(trees, {x=rnd(400)-200, y=rnd(400)-200})
     end
 
-    for i = 1, 4 do
-        add(rocks, {x=rnd(384)-192, y=rnd(384)-192})
-    end
 
 end
