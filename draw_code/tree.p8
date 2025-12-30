@@ -2,6 +2,9 @@ function draw_tree(x,y)
    if x < -72 or y < -72 then return end
    if x > 72 or y > 72 then return end
  add_draw_inst_to_layer(function() 
+   fillp(▒)
+   circfill(x,y,8,1) 
+   fillp()
    circfill(x,y,6,1) 
 end, 1)
 

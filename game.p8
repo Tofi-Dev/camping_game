@@ -3,7 +3,7 @@ trees = {
 }
 
 function game_draw()
-    cls()
+    cls(11)
 
     layers={}
 
@@ -45,24 +45,13 @@ function game_update()
         cam.y  = cam.y + 1
     end
 
-    if cam.x > 200 then
-        cam.x = 200
-    end
-    if cam.y > 200 then
-        cam.y = 200
-    end
-    if cam.x < -200 then
-        cam.x = -200
-    end
-    if cam.y < -200 then
-        cam.y = -200
-    end
 end
 
 function game_init()
+    local world_size = 800
     cam = {x=0, y=0}
-    for i = 1,128 do
-        add(trees, {x=rnd(400)-200, y=rnd(400)-200})
+    for i = 1,512 do
+        add(trees, {x=rnd(world_size)-world_size/2, y=rnd(world_size)-world_size/2})
     end
 
 
