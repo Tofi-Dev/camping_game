@@ -12,7 +12,7 @@ function draw_tree(x, y, transparent)
       add_draw_inst_to_layer(
          function()
             if transparent then
-               fillp(▒)
+               fillp_odd_even()
             end
             circfill(x * move_multi, y * move_multi, i + 2, cols[i + 1])
             fillp()
@@ -27,7 +27,7 @@ function draw_tree(x, y, transparent)
       add_draw_inst_to_layer(
          function()
             if transparent then
-               fillp(▒)
+               fillp_odd_even()
             end
             circfill(x * move_multi, y * move_multi, size[i - 4], cols[i - 4])
             fillp()

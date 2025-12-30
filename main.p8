@@ -16,6 +16,8 @@ __lua__
 #include items/items.p8
 #include object/object.p8
 
+#include functions/misc.p8
+
 current_state = "game"
 
 function _init()
