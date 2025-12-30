@@ -3,14 +3,14 @@ function draw_tree(x,y)
    if x > 72 or y > 72 then return end
  add_draw_inst_to_layer(function() 
    fillp(▒)
-   circfill(x,y,8,1) 
+   circfill(x,y,8,3) 
    fillp()
-   circfill(x,y,6,1) 
+   circfill(x,y,6,3) 
 end, 1)
 
  for i = 0, 5 do
     local move_multi = ((i/16)+1)
-    local cols = {2,2,4,4,4,4}
+    local cols = {4,4,2,2,2,2}
     add_draw_inst_to_layer(function()
         circfill(x*move_multi,y*move_multi,i+2,cols[i+1])
     end, i+2)
