@@ -21,6 +21,7 @@ __lua__
 current_state = "game"
 
 function _init()
+    f = 0
     states = {
         game = { game_draw, game_update }
     }
@@ -34,6 +35,7 @@ end
 
 function _update60()
     states[current_state][2]()
+    f += 1
 end
 
 __gfx__
