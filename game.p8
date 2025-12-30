@@ -1,6 +1,4 @@
-trees = {
-
-}
+objs = {}
 
 function game_draw()
     cls(11)
@@ -16,9 +14,9 @@ function game_draw()
         end
     end
 
-    for i = 1, #trees do
-        local tree = trees[i]
-        draw_tree(tree.x - cam.x, tree.y - cam.y)
+    for i = 1, #objs do
+        local obj = objs[i]
+        obj.draw()
     end
 
     camera(-64,-64)
@@ -48,10 +46,14 @@ function game_update()
 end
 
 function game_init()
-    local world_size = 800
+    local world_size = 1000
     cam = {x=0, y=0}
-    for i = 1,512 do
-        add(trees, {x=rnd(world_size)-world_size/2, y=rnd(world_size)-world_size/2})
+    for i = 1,400 do
+        add(objs, add_tree(rnd(world_size)-world_size/2, rnd(world_size)-world_size/2))
+    end
+
+    for i = 1,400 do
+        add(objs, add_rock(rnd(world_size)-world_size/2, rnd(world_size)-world_size/2))
     end
 
 
