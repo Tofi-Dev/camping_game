@@ -7,6 +7,9 @@ I don't really have a proper title for this game yet, so keep that in mind.
 
 ## Features to implement:
 
+Currently Implemented:
+- Rendering Engine (needs improvement)
+
 General:
 - Player
 - Monsters
