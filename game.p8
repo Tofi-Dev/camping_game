@@ -48,7 +48,7 @@ function game_init()
             mset(i, j, 0)
             end
             if mget(i, j) == 6 then
-            --add_bush(i*8, j*8)
+            add_bush(i*8, j*8)
             mset(i, j, 0)
             end
             if mget(i, j) == 0 then

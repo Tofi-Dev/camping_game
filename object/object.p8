@@ -20,3 +20,13 @@ function add_rock(x,y)
         end
     })
 end
+
+function add_bush(x,y)
+    add(objs, {
+        x = x,
+        y = y,
+        draw = function()
+            draw_bush(x,y)
+        end
+    })
+end
