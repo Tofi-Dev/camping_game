@@ -61,7 +61,4 @@ function game_init()
             end
         end
     end
-
-    add_to_buckets()
-
 end

@@ -34,6 +34,13 @@ function player_update()
         player.y = player.y + 1
     end
 
+    buckets={}
+    for o in all(objs) do
+    local hash = get_hash(o.x, o.y)
+    if (not buckets[hash]) buckets[hash]={}
+    add(buckets[hash], o)
+    end
+
     for dy=-1,1 do for dx=-1,1 do
         if check_collisions(buckets[get_hash(player.x + dx, player.y + dy)] or {}, player) == true then
             player.x = player.prev_x
