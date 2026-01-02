@@ -50,7 +50,7 @@ function draw_rock(x,y)
     add_draw_inst_to_layer(function() spr(4, x-4, y-4) end, 1)
 end
 
-function draw_bush(x,y)
+function draw_bush(x,y, transparent)
     x = x - cam.x
     y = y - cam.y
 
@@ -65,6 +65,9 @@ function draw_bush(x,y)
       add_draw_inst_to_layer(
          function()
             local offset_x, offset_y = (i)%4, (i)&4
+            if transparent then
+               fillp_odd_even()
+            end
             circfill(x * move_multi, y * move_multi, sizes[i + 1], cols[i + 1])
             fillp()
          end, i + 2

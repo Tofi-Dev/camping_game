@@ -12,6 +12,9 @@ function draw_layers()
     for i = 1, #layers do
         for j = 1, #layers[i] do
             layers[i][j]()
+            if debug_draw then
+                flip()
+            end
         end
     end
 end

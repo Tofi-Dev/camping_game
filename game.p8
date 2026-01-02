@@ -19,8 +19,8 @@ function game_draw()
 
     camera(0,0)
 
-    print(cam.x, 0, 0, 7)
-    print(cam.y, 0, 8, 7)
+    print(player.x, 0, 0, 7)
+    print(player.y, 0, 8, 7)
 end
 
 function game_update()
@@ -29,10 +29,13 @@ function game_update()
     cam.x = mid(64, cam.x, 120*8)
     cam.y = mid(64, cam.y, 24*8)
 
-
+    if btnp(4) then
+        debug_draw = not debug_draw
+    end
 end
 
 function game_init()
+    debug_draw = false
     player_init()
     local world_size = 1000
     cam = {x=0, y=0}
@@ -58,5 +61,7 @@ function game_init()
             end
         end
     end
+
+    add_to_buckets()
 
 end
