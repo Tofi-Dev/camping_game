@@ -15,6 +15,13 @@ end
 
 function player_update()
 
+    buckets={}
+    for o in all(objs) do
+    local hash = get_hash(o.x, o.y)
+    if (not buckets[hash]) buckets[hash]={}
+    add(buckets[hash], o)
+    end
+
     cam.x = player.x
     cam.y = player.y
     
@@ -27,6 +34,8 @@ function player_update()
         player.x = player.x + 1
     end
 
+    check_axis_for_col("x")
+
     if (btn(2)) then
         player.y = player.y - 1
     end
@@ -34,22 +43,8 @@ function player_update()
         player.y = player.y + 1
     end
 
-    buckets={}
-    for o in all(objs) do
-    local hash = get_hash(o.x, o.y)
-    if (not buckets[hash]) buckets[hash]={}
-    add(buckets[hash], o)
-    end
+    check_axis_for_col("y")
 
-    for dy=-1,1 do for dx=-1,1 do
-        if check_collisions(buckets[get_hash(player.x + dx, player.y + dy)] or {}, player) == true then
-            player.x = player.prev_x
-            player.y = player.prev_y
-            return true
-        end
-    end
-
-end
 end
 
 --draw
@@ -68,4 +63,15 @@ function check_collisions(bucket, plr)
     print(o.x, o.y)
     if (hitbox_collide(plr.hitbox, o.hitbox, plr, o)) return true
   end 
+end
+
+function check_axis_for_col(type)
+    for dy=-1,1 do for dx=-1,1 do
+        if check_collisions(buckets[get_hash(player.x + dx, player.y + dy)] or {}, player) == true then
+            if type == "x" then player.x = player.prev_x end
+            if type == "y" then player.y = player.prev_y end
+            break
+            end
+        end
+    end
 end

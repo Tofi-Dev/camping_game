@@ -13,3 +13,7 @@ end
 function make_hitbox(x, y, w, h)
     return {x=x, y=y, w=w, h=h}
 end
+
+function get_hash(x,y) 
+ return x&-16 | y>>>16 & 0x.fff0
+end
