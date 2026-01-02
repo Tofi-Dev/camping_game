@@ -17,8 +17,6 @@ __lua__
 
 #include functions/misc.p8
 
-#include object/chunking.p8
-
 current_state = "game"
 
 function _init()
