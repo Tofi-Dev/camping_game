@@ -45,6 +45,7 @@ function player_update()
         if check_collisions(buckets[get_hash(player.x + dx, player.y + dy)] or {}, player) == true then
             player.x = player.prev_x
             player.y = player.prev_y
+            return true
         end
     end
 
