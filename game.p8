@@ -48,23 +48,26 @@ end
 function game_init()
     debug_draw = false
     player_init()
-    local world_size = {
-        
-    }
+    local world_size = 1000
     cam = {x=0, y=0}
 
     for i = 0, 128 do
         for j = 0, 32 do
+            if mget(i, j) == 4 then
+            add_rock(i*8, j*8)
+            mset(i, j, 0)
+            end
+            if mget(i, j) == 5 then
+            add_tree(i*8, j*8)
+            mset(i, j, 0)
+            end
+            if mget(i, j) == 6 then
+            add_bush(i*8, j*8)
+            mset(i, j, 0)
+            end
             if mget(i, j) == 0 then
                 if rnd(5) >= 3 then
                 mset(i, j, rnd(3))
-                end
-
-                if rnd(64) >= 63 then
-                add_rock(i * 8, j * 8)
-                end
-                if rnd(32) >= 31 then
-                add_tree(i * 8, j * 8)
                 end
             end
         end
