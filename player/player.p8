@@ -18,26 +18,26 @@ function player_update()
     player.prev_x = player.x
     player.prev_y = player.y
     if btn(0) then
-        player.x = player.x - 1
+        player.x = player.x - 0.75
     end
     if btn(1) then
-        player.x = player.x + 1
+        player.x = player.x + 0.75
     end
 
     check_axis_for_col("x")
 
     if btn(2) then
-        player.y = player.y - 1
+        player.y = player.y - 0.75
     end
     if btn(3) then
-        player.y = player.y + 1
+        player.y = player.y + 0.75
     end
 
     check_axis_for_col("y")
 
 
-    cam.x = player.x
-    cam.y = player.y
+    cam.x = lerp(cam.x, player.x, 0.1)
+    cam.y = lerp(cam.y, player.y, 0.1)
 
 end
 

@@ -4,6 +4,10 @@ end
 
 -- collision
 
+function lerp(a, b, t)
+    return a + (b - a) * t
+end
+
 function hitbox_collide(hitbox1, hitbox2, obj1, obj2)
     local x1, y1 = obj1.x + hitbox1.x, obj1.y + hitbox1.y
     local x2, y2 = obj2.x + hitbox2.x, obj2.y + hitbox2.y
