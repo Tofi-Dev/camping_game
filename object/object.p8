@@ -4,7 +4,7 @@ function add_tree(x,y)
     add(objs, {
         x = x,
         y = y,
-        hitbox = make_hitbox(0,0,4,4),
+        hitbox = make_hitbox(0,0,6,6),
         draw = function()
             if distance_to(x,y,player.x,player.y) < 16 then  draw_tree(x,y,true) return end
             draw_tree(x,y,false)
