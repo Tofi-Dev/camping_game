@@ -82,7 +82,7 @@ function draw_fog(x,y)
     local y = y - cam.y
 
     local anim_x = cos(time()+(real_y/64))*4
-    local anim_y = sin(time()+(real_x/64))*4
+    local anim_y = sin(time()+(real_x/64))*2
 
     if x < -90 or y < -90 then return end
     if x > 90 or y > 90 then return end
