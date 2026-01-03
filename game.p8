@@ -1,7 +1,7 @@
 objs = {}
 
 function game_draw()
-    cls(11)
+    cls(3)
 
     layers={}
 
@@ -9,6 +9,18 @@ function game_draw()
         local obj = objs[i]
         obj.draw()
     end
+
+    --draw fog at edges
+    for i = 0, 32 do
+        draw_fog(0, i*8)
+        draw_fog(128*8, i*8)
+    end
+
+    for i = 0, 128 do
+        draw_fog(i*8, 0)
+        draw_fog(i*8, 32*8)
+    end
+
     player_draw()
 
     camera(-64,-64)
@@ -19,8 +31,7 @@ function game_draw()
 
     camera(0,0)
 
-    print(player.x, 0, 0, 7)
-    print(player.y, 0, 8, 7)
+    print("objs:"..#objs, 0, 0, 11)
 end
 
 function game_update()

@@ -10,8 +10,10 @@ I don't really have a proper title for this game yet, so keep that in mind.
 Currently Implemented:
 - Rendering Engine (needs improvement)
 
+Partially Implemented:
+- Player (still needs systems)
+
 General:
-- Player
 - Monsters
 - Basic Inventory
 - Survival mechanics
