@@ -8,7 +8,7 @@ function draw_tree(x, y, transparent)
 
    for i = 0, 5 do
       local move_multi = ((i / 16) + 1)
-      local cols = { 2, 2, 1, 1, 1, 1 }
+      local cols = split"2,2,1,1,1,1"
       add_draw_inst_to_layer(
          function()
             if transparent then
@@ -22,9 +22,9 @@ function draw_tree(x, y, transparent)
 
    for i = 5, 8 do
       local move_multi = ((i / 16) + 1)
-      local cols = { 7, 3, 3, 4 }
-      local size = { 12, 10, 8, 6 }
-      local fillps = { "e", "d", "e", "d" }
+      local cols = split"7,3,3,4"
+      local size = split"12,10,8,6"
+      local fillps = split"e,d,e,d"
       add_draw_inst_to_layer(
          function()
 
@@ -69,8 +69,8 @@ function draw_bush(x,y, transparent)
     draw_shadow(x, y, 11)
    for i = 0, 3 do
       local move_multi = ((i / 38) + 1)
-      local cols = { 3,4,3,4,3 }
-      local sizes = { 8,7,6,5,4}
+      local cols = split"3,4,3,4,3"
+      local sizes = split"8,7,6,5,4"
       add_draw_inst_to_layer(
          function()
             local offset_x, offset_y = (i)%4, (i)&4
