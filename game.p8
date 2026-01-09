@@ -36,6 +36,8 @@ function game_draw()
     camera(0,0)
 
     print("objs:"..#objs, 0, 0, 11)
+
+    draw_gui()
 end
 
 function game_update()

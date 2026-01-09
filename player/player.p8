@@ -7,7 +7,10 @@ function player_init()
         prev_x = x,
         prev_y = y,
         eyes_dir = 0,
-        hitbox = make_hitbox(0, 0, 8, 8)
+        hitbox = make_hitbox(0, 0, 8, 8),
+
+        hp = 100
+        
     }
 end
 
@@ -39,19 +42,20 @@ function player_update()
     player.y = mid(player.y, 0, world_size * 8)
 
 
-    cam.x = lerp(cam.x, player.x, 0.1)
-    cam.y = lerp(cam.y, player.y, 0.1)
+    cam.x = lerp(cam.x, player.x, 0.125)
+    cam.y = lerp(cam.y, player.y, 0.125)
 
 end
 
 --draw
 
 function player_draw()
+    draw_shadow(player.x - cam.x, player.y - cam.y, 8)
     add_draw_inst_to_layer(
         function()
-            circfill(player.x - cam.x, player.y - cam.y, 4, 2)
-            circfill(player.x - cam.x, player.y - cam.y, 3, 8)
-        end, 1
+            circfill(player.x - cam.x, player.y - cam.y, 4, 8)
+            circfill(player.x - cam.x, player.y - cam.y, 3, 9)
+        end, 2
     )
 end
 

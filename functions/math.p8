@@ -2,11 +2,15 @@ function distance_to(x1,y1,x2,y2)
     return sqrt((x2-x1)^2 + (y2-y1)^2)
 end
 
--- collision
-
 function lerp(a, b, t)
     return a + (b - a) * t
 end
+
+function remap(value, in_min, in_max, out_min, out_max)
+    return (value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
+end
+
+-- collision
 
 function hitbox_collide(hitbox1, hitbox2, obj1, obj2)
     local x1, y1 = obj1.x + hitbox1.x, obj1.y + hitbox1.y

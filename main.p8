@@ -5,6 +5,7 @@ __lua__
 
 #include draw_code/object_draw.p8
 #include draw_code/shadow.p8
+#include draw_code/ui.p8
 
 #include player/player.p8
 

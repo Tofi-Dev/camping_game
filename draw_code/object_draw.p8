@@ -20,11 +20,11 @@ function draw_tree(x, y, transparent)
       )
    end
 
-   for i = 5, 7 do
+   for i = 5, 8 do
       local move_multi = ((i / 16) + 1)
-      local cols = { 7, 3, 3 }
-      local size = { 12, 10, 8 }
-      local fillps = { "e", "d", "e"}
+      local cols = { 7, 3, 3, 4 }
+      local size = { 12, 10, 8, 6 }
+      local fillps = { "e", "d", "e", "d" }
       add_draw_inst_to_layer(
          function()
 
