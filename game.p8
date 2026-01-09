@@ -57,5 +57,9 @@ function game_init()
     world_size = 128
     cam = {x=0, y=0}
 
+    game = {
+        day = 1
+    }
+
     generate_world(world_size)
 end

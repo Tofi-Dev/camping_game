@@ -8,4 +8,5 @@ function draw_gui()
     for i = 0, 3 do
         rrect(1+i*13,115, 12, 12, 3,11)
     end
+    print("dAY:"..game.day, 2, 108, 11)
 end

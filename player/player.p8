@@ -9,6 +9,7 @@ function player_init()
         eyes_dir = 0,
         hitbox = make_hitbox(0, 0, 8, 8),
         tail_segs = {},
+        step = 0,
 
         hp = 100
         
@@ -23,26 +24,32 @@ function player_update()
     player.prev_y = player.y
     if btn(0) then
         player.x = player.x - 0.75
-        player.eyes_dir = lerp(player.eyes_dir, 1, 0.25)
+        player.eyes_dir = rlerp(player.eyes_dir, 1, 0.25)
     end
     if btn(1) then
         player.x = player.x + 0.75
-        player.eyes_dir = lerp(player.eyes_dir, 3, 0.25)
+        player.eyes_dir = rlerp(player.eyes_dir, 3, 0.25)
     end
 
     check_axis_for_col("x")
 
     if btn(2) then
         player.y = player.y - 0.75
-        player.eyes_dir = lerp(player.eyes_dir, 4, 0.25)
+        player.eyes_dir = rlerp(player.eyes_dir, 4, 0.25)
     end
     if btn(3) then
         player.y = player.y + 0.75
-        player.eyes_dir = lerp(player.eyes_dir, 2, 0.25)
+        player.eyes_dir = rlerp(player.eyes_dir, 2, 0.25)
     end
 
     if player.prev_x != player.x or player.prev_y != player.y then
         add(player.tail_segs, {x = player.x, y = player.y, l=16})
+        player.step = player.step + 1
+
+        if player.step > 16 then
+            sfx(01)
+            player.step = 0
+        end
         
         for i in all(player.tail_segs) do
             i.l = i.l - 1

@@ -6,6 +6,10 @@ function lerp(a, b, t)
     return a + (b - a) * t
 end
 
+function rlerp(a,b,t)
+    return atan2(lerp(cos(a),cos(b),t),lerp(sin(a),sin(b),t)) 
+end
+
 function remap(value, in_min, in_max, out_min, out_max)
     return (value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 end
