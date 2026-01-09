@@ -20,15 +20,24 @@ function draw_tree(x, y, transparent)
       )
    end
 
-   for i = 5, 6 do
+   for i = 5, 7 do
       local move_multi = ((i / 16) + 1)
-      local cols = { 7, 3 }
-      local size = { 12, 8 }
+      local cols = { 7, 3, 3 }
+      local size = { 12, 10, 8 }
+      local fillps = { "e", "d", "e"}
       add_draw_inst_to_layer(
          function()
+
+            if fillps[i - 4] == "d" then
+               fillp_odd_even()
+            elseif fillps[i - 4] == "e" then
+               fillp()
+            end
+
             if transparent then
                fillp_odd_even()
             end
+
             circfill(x * move_multi, y * move_multi, size[i - 4], cols[i - 4])
             fillp()
          end, i + 2

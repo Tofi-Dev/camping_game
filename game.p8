@@ -11,21 +11,25 @@ function game_draw()
     end
 
     --draw fog at edges
-    for i = 0, 32 do
+    for i = 0, world_size do
         draw_fog(0, i*8)
-        draw_fog(128*8, i*8)
+        draw_fog(world_size*8, i*8)
     end
 
-    for i = 0, 128 do
+    for i = 0, world_size do
         draw_fog(i*8, 0)
-        draw_fog(i*8, 32*8)
+        draw_fog(i*8, world_size*8)
     end
 
     player_draw()
 
     camera(-64,-64)
 
-    map(0,0,-cam.x,-cam.y)
+    for i =-2, 0 do
+        for j = -2, 0 do
+            map(0,0, (-cam.x%64)+i*64, (-cam.y%64)+j*64, 8,8)
+        end
+    end
 
     draw_layers()
 
@@ -37,8 +41,8 @@ end
 function game_update()
     player_update()
 
-    cam.x = mid(64, cam.x, 120*8)
-    cam.y = mid(64, cam.y, 24*8)
+    cam.x = mid(64, cam.x, (world_size-8)*8)
+    cam.y = mid(64, cam.y, (world_size-8)*8)
 
     if btnp(4) then
         debug_draw = not debug_draw
@@ -48,28 +52,8 @@ end
 function game_init()
     debug_draw = false
     player_init()
-    local world_size = 1000
+    world_size = 128
     cam = {x=0, y=0}
 
-    for i = 0, 128 do
-        for j = 0, 32 do
-            if mget(i, j) == 4 then
-            add_rock(i*8, j*8)
-            mset(i, j, 0)
-            end
-            if mget(i, j) == 5 then
-            add_tree(i*8, j*8)
-            mset(i, j, 0)
-            end
-            if mget(i, j) == 6 then
-            add_bush(i*8, j*8)
-            mset(i, j, 0)
-            end
-            if mget(i, j) == 0 then
-                if rnd(5) >= 3 then
-                mset(i, j, rnd(3))
-                end
-            end
-        end
-    end
+    generate_world(world_size)
 end

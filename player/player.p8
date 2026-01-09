@@ -35,6 +35,9 @@ function player_update()
 
     check_axis_for_col("y")
 
+    player.x = mid(player.x, 0, world_size * 8)
+    player.y = mid(player.y, 0, world_size * 8)
+
 
     cam.x = lerp(cam.x, player.x, 0.1)
     cam.y = lerp(cam.y, player.y, 0.1)
